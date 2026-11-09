@@ -1,0 +1,9 @@
+window_s=1.0 fpr 0.00040972222222222224 {'ir:0.05': np.float64(0.0), 'blind_naive:0.0': np.float64(0.989), 'blind_gain:0.0': np.float64(0.0), 'blind_nodark:0.0': np.float64(0.0)}
+window_s=10.0 fpr 0.0009722222222222222 {'ir:0.05': np.float64(0.932), 'blind_naive:0.0': np.float64(1.0), 'blind_gain:0.0': np.float64(1.0), 'blind_nodark:0.0': np.float64(0.002)}
+window_s=60.0 fpr 0.0016666666666666666 {'ir:0.05': np.float64(1.0), 'blind_naive:0.0': np.float64(1.0), 'blind_gain:0.0': np.float64(1.0), 'blind_nodark:0.0': np.float64(0.02)}
+int_sd_rel=0.005 fpr 0.0009722222222222222 {'ir:0.05': np.float64(0.93), 'blind_naive:0.0': np.float64(1.0), 'blind_gain:0.0': np.float64(1.0), 'blind_nodark:0.0': np.float64(0.002)}
+int_sd_rel=0.01 fpr 0.0009722222222222222 {'ir:0.05': np.float64(0.932), 'blind_naive:0.0': np.float64(1.0), 'blind_gain:0.0': np.float64(1.0), 'blind_nodark:0.0': np.float64(0.002)}
+int_sd_rel=0.02 fpr 0.0008333333333333333 {'ir:0.05': np.float64(0.908), 'blind_naive:0.0': np.float64(1.0), 'blind_gain:0.0': np.float64(1.0), 'blind_nodark:0.0': np.float64(0.001)}
+length_km=25.0 fpr 0.0009722222222222222 {'ir:0.05': np.float64(1.0), 'blind_naive:0.0': np.float64(1.0), 'blind_gain:0.0': np.float64(1.0), 'blind_nodark:0.0': np.float64(0.0)}
+length_km=50.0 fpr 0.0009722222222222222 {'ir:0.05': np.float64(0.932), 'blind_naive:0.0': np.float64(1.0), 'blind_gain:0.0': np.float64(1.0), 'blind_nodark:0.0': np.float64(0.002)}
+length_km=75.0 fpr 0.0011111111111111111 {'ir:0.05': np.float64(0.21), 'blind_naive:0.0': np.float64(1.0), 'blind_gain:0.0': np.float64(1.0), 'blind_nodark:0.0': np.float64(0.0)}

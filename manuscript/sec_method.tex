@@ -1,0 +1,18 @@
+\section{Decoy-consistency statistic}\label{sec:dcs}
+
+Drift moves three physical parameters; the telemetry of one window has twelve count pairs. The DCS spends three degrees of freedom on tracking the channel and tests the rest. Let $Q_k=\sum_b n_{b,k}/\sum_b N_{b,k}$ be the pooled gain of intensity $k$. A fixed-point iteration on the signal and vacuum-like gains,
+\begin{equation}\label{eq:fit}
+\hat\eta=-\frac{1}{\mu_1}\ln\frac{1-Q_{\mu_1}}{1-\hat Y_0},\qquad
+\hat Y_0=\frac{Q_{\mu_3}-\bigl(1-e^{-\hat\eta\mu_3}\bigr)}{e^{-\hat\eta\mu_3}},
+\end{equation}
+started from $\hat Y_0=Q_{\mu_3}$ and run for four steps, gives $(\hat\eta,\hat Y_0)$; the signal error count then gives $\hat e_d=(m_{\mu_1}/N_{\mu_1}-e_0\hat Y_0)/(Q_{\mu_1}-\hat Y_0)$, clipped to $[0,1/2]$. With these estimates the honest model (\ref{eq:honest}) predicts the remaining observations, and six binomial residuals
+\begin{equation}
+r_j=\frac{c_j-M_j\hat p_j}{\sqrt{M_j\hat p_j(1-\hat p_j)}},\qquad j=1,\dots,6,
+\end{equation}
+compare an observed count $c_j$ out of $M_j$ trials with its predicted probability $\hat p_j$. The six are the pooled decoy gain, the decoy error rate in each basis, the vacuum-like error rate, the signal error rate in the test basis, and the share of signal detections in the key basis (which must equal the share of pulses sent in that basis). The decoy-state estimator uses the same relations to bound the single-photon contribution over a whole block; the DCS turns them into a per-window test with a controlled false-alarm rate. The statistic is
+\begin{equation}
+S_t=\sum_{j=1}^{6}\left(\frac{r_j-\mathrm{med}_j}{1.4826\,\mathrm{MAD}_j}\right)^2,
+\end{equation}
+where the median and median absolute deviation come from benign windows recorded without slow drift. The robust standardisation absorbs the fact that unobserved intensity noise inflates the decoy-gain residual beyond its binomial variance. An alarm is raised when $S_t$ exceeds the $(1-\alpha)$ empirical quantile of $S$ on separate benign calibration windows.
+
+Each window costs a constant number of arithmetic operations, and the calibration needs only benign data at the operating point. Slow drift in $\eta$, $Y_0$ or $e_d$ moves the estimates, not the residuals. Two blind spots are built in. Pure added loss is indistinguishable from a transmittance change, so the DCS cannot flag it; the key rate shows such an attack anyway. An intercept-resend attack on a small fraction raises the signal QBER and is partly absorbed into $\hat e_d$, so only the decoy and test-basis residuals see it.

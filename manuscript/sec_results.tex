@@ -1,0 +1,68 @@
+\section{Results}\label{sec:results}
+
+\subsection{Honest operation and the bound check}
+The simulator reproduces the expected finite-key behaviour. At the calibration point the honest link yields $\keyrateDZero\times10^{-3}$ secret bits per pulse; nominal drift lowers this to $\keyrateDOne\times10^{-3}$ and fourfold drift to $\keyrateDFour\times10^{-3}$, where \keyposDFour\% of the blocks still produce a key. Over the \nBlocksHonest{} honest blocks the lower bound $s_{Z,1}$ exceeded the true single-photon count \boundViol{} times, and no honest block met the breach condition (\ref{eq:breach}). At $d=1$ the stream loss spans \lossminDOne--\lossmaxDOne\,dB and the misalignment reaches \edmaxDOne\%; at $d=4$ the ranges are \lossminDFour--\lossmaxDFour\,dB and \edmaxDFour\%.
+
+\subsection{False alarms under drift}
+Table~\ref{tab:fpr} and Figure~\ref{fig:fpr} give the per-window false-alarm rate on benign streams. Every calibrated detector meets its $10^{-3}$ target at $d=0$. Drift separates them at once. IF-stat and RF-stat alarm in \fprIFstatDOne\% and \fprRFstatDOne\% of benign windows at $d=1$; their alarms track the hourly misalignment cycle (Figure~\ref{fig:trace}, lower panels), so an operator would see a periodic alarm on a healthy link. Domain randomisation helps but does not hold the target: RF-DR reaches \fprRFDRDOne\% at $d=1$ and \fprRFDRDFour\% at $d=4$, with large seed-to-seed spread. IF-drift, fitted on benign drift up to $d=2$, stays at \fprIFdriftDOne\% at $d=1$ and rises to \fprIFdriftDTwo\% and \fprIFdriftDFour\% at $d=2$ and $d=4$. The DCS stays between \fprDCSDOne\% and \fprDCSDFour\% at every scale. Its paired difference from each learned detector at $d\geq1$ has Holm-adjusted $p\leq\holmFprMax$; against the fixed QBER rule, which raised no alarm at all, the DCS is the worse of the two on this metric. Moving the thresholds to drifted calibration data (Table~\ref{tab:fprdcal} in the appendix) brings RF-DR to \fprdcalRFDRDFour\% and IF-drift to \fprdcalIFdriftDFour\% at $d=4$, at the price of benign drift data recorded on the target link.
+
+\begin{table}[t]
+\centering
+\caption{Per-window false-alarm rate (\%) on 24-hour benign streams, thresholds calibrated on drift-free data for $\alpha=0.1\%$. Mean $\pm$ 95\% $t$-interval over \nSeeds{} seeds.}\label{tab:fpr}
+\small\input{tables/fpr.tex}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.62\linewidth]{figures/fpr_vs_drift.pdf}
+\caption{Per-window false-alarm rate against drift scale (log axis; error bars are 95\% $t$-intervals over \nSeeds{} seeds). IF-stat (squares) and RF-stat (triangles) overlap near 1 for $d\geq1$. The QBER rule raised no alarms and is not shown on the log axis. The dashed line is the calibration target.}\label{fig:fpr}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/trace_d1.pdf}
+\caption{Window scores over one 24-hour stream at $d=1$ with the attack active in the shaded two hours; dashed lines are the calibrated thresholds. Left: Blind-naive. Right: Blind-cal. Top: DCS (log axis). Bottom: RF-stat, whose score follows the hourly misalignment ramp and crosses its threshold in most benign windows.}\label{fig:trace}
+\end{figure}
+
+\subsection{Which attacks are separable}
+Figure~\ref{fig:auc} gives the ROC AUC at $d=1$; Table~\ref{tab:aucd0} in the appendix gives $d=0$. Four results stand out.
+
+The calibrated attack is invisible. For Blind-cal the AUC of every detector at every drift scale lies between \aucCalMin{} and \aucCalMax{}, as Proposition~\ref{prop:indist} requires. The high TPR of IF-stat and RF-stat on Blind-cal in Table~\ref{tab:tpr} is their benign false-alarm rate, not detection.
+
+Errors in the attacker's calibration are visible to the DCS when they break a physical relation the refit cannot absorb. Blind-naive (no dark counts, no errors, wrong decoy ratio) and Blind-gain (correct gains, no errors) give AUC 1.00 and an alarm in the first attacked window in every seed and at every drift scale. Blind-nodark is the exception: the refit lowers $\hat Y_0$ to match the missing dark counts and the residuals stay small, so the DCS scores \aucNodarkDCSDOne{} at $d=1$. The learned detectors see this attack (IF-drift \aucNodarkIFdriftDOne{}, RF-DR \aucNodarkRFDRDOne{}) because they compare absolute levels with what they were trained on.
+
+An attacker who ignores drift becomes distinguishable in the opposite direction. Blind-cal-static emits the statistics of the nominal channel while the real channel drifts. The learned detectors score these windows as \emph{more} normal than the benign ones (IF-stat AUC \aucStaticIFstatDOne{}, RF-stat \aucStaticRFstatDOne{} at $d=1$), so the drift itself is the signature, but only a detector that alarms on missing variation would use it. The DCS, which refits every window, scores \aucStaticDCSDOne{}.
+
+In-model attacks are detected but do not need to be. IR and PNS give DCS AUC near 1 at every drift scale; at $d=0$ the learned detectors reach AUC between \aucInModelLearnedMin{} and 1.00 on the same attacks. The DCS cannot see added loss (AUC below 0.5) by construction.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\linewidth]{figures/auc_heatmap_d1.pdf}
+\caption{ROC AUC at $d=1$ (mean over \nSeeds{} seeds). Blue: attack windows score higher than benign windows; orange: lower; light grey: chance. Values below 0.5 for the static calibrated attack mean that its windows look more stationary than the drifting benign windows.}\label{fig:auc}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{TPR at the drift-free calibrated threshold, $d=1$ (mean over \nSeeds{} seeds). The first row is the benign FPR of the same detector; a TPR close to it is not detection.}\label{tab:tpr}
+\small\input{tables/tpr_d1.tex}
+\end{table}
+
+\subsection{Finite-key audit}
+Table~\ref{tab:key} links detection to secrecy at $d=1$. The finite-key analysis aborts every PNS block and every IR block at $f=0.2$; at $f=0.05$ it outputs a shorter key ($\irFiveRate\times10^{-3}$ per pulse) while Eve knows \irFiveKnown\% of the sifted bits, and no block breaches. Added loss only shortens the key. No in-model attack produced a breach in any block at any drift scale (maximum \breachInModelMax\%). Every blinding variant did the opposite: in every block where the analysis produced a key, that key was fully known to Eve (at least \breachBlindMin\% of attacked blocks at every scale; the remainder are blocks that aborted because of drift). Blind-naive even raises the key rate to $\blindNaiveRate\times10^{-3}$, since its faked clicks carry no errors. The DCS flags Blind-naive and Blind-gain within the first 10-second window, long before the first 10-minute block closes, so those blocks can be discarded; it does not flag Blind-nodark, Blind-cal or Blind-cal-static.
+
+\begin{table}[t]
+\centering
+\caption{Finite-key audit at $d=1$ over all complete blocks inside the attack (120 blocks per scenario, 1\,440 for the honest stream). ``Breach'' is the share of blocks satisfying (\ref{eq:breach}).}\label{tab:key}
+\small\input{tables/key_d1.tex}
+\end{table}
+
+\subsection{Sensitivity and a post-hoc variant}\label{sec:sens}
+Table~\ref{tab:sens} varies one factor at a time on separate seeds (five per setting, $d=1$, 8-hour streams). The false-alarm rate stays between \senswinOneFpr\% and \senswinSixtyFpr\% throughout. Detection power depends on counts per window. With 1-second windows the DCS still flags Blind-naive but loses Blind-gain (TPR \senswinOneGain) and IR at $f=0.05$ (TPR \senswinOneIr); with 60-second windows the IR TPR rises to \senswinSixtyIr{} and Blind-gain stays at \senswinSixtyGain. At 75\,km the IR TPR falls to \senslenSeventyFiveIr. Intensity noise between 0.5\% and 2\% has little effect, since the robust standardisation absorbs it.
+
+The Blind-nodark result suggested one change: add the background-yield estimate $\hat Y_0$ itself as a seventh standardised residual, since blinded detectors produce no dark counts and the fitted level should not leave its calibrated range. This DCS+Y0 variant was defined after the main run and was evaluated on ten fresh seeds. It lifts the Blind-nodark AUC from \exNodarkDCSDOne{} to \exNodarkDCSYDOne{} at $d=1$ and keeps the false-alarm rate at \exFprDCSYDOne\% there, but the rate rises to \exFprDCSYDFour\% at $d=4$ against \exFprDCSDFour\% for the DCS, because the dark-count swing scales with $d$. Neither variant separates Blind-cal (AUC near 0.5).
+
+\begin{table}[t]
+\centering
+\caption{One-factor sensitivity of the DCS at $d=1$ (five seeds per row; base setting: 10 s, $\sigma_I=1\%$, 50 km). Columns 3--6 are TPR at the calibrated threshold.}\label{tab:sens}
+\small\input{tables/sens.tex}
+\end{table}

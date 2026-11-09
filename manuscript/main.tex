@@ -1,0 +1,63 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lineno}
+\usepackage{setspace}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newcommand{\etal}{et al.}
+\input{numbers.tex}
+\linenumbers
+\onehalfspacing
+
+\title{What window telemetry can and cannot reveal about quantum hacking: a finite-key, drift-aware benchmark of intrusion detection for decoy-state QKD}
+\author{Osman Can \c{C}etlenbik\\[2pt]
+\small Big Data Analytics Program, Department of Statistics, Manisa Technical Sciences Vocational School,\\
+\small Manisa Celal Bayar University, Manisa 45140, T\"urkiye\\
+\small E-mail: \href{mailto:osman.cetlenbik@cbu.edu.tr}{osman.cetlenbik@cbu.edu.tr} \quad ORCID: 0009-0000-6561-1943}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+
+\noindent\textbf{Keywords:} quantum key distribution, decoy states, detector blinding, intrusion detection, concept drift, finite-key security
+
+\input{sec_intro.tex}
+\input{sec_background.tex}
+\input{sec_model.tex}
+\input{sec_method.tex}
+\input{sec_setup.tex}
+\input{sec_results.tex}
+\input{sec_discussion.tex}
+\input{sec_conclusion.tex}
+
+\section*{Data availability statement}
+The simulator, detectors, finite-key code, per-seed results and the scripts that produce every table and figure are openly available under the MIT licence at \url{https://github.com/osmancancet/qkd-telemetry-ids}.
+
+\appendix
+\section{Supplementary tables}
+\begin{table}[h]
+\centering
+\caption{Per-window false-alarm rate (\%) when thresholds are calibrated on benign data with drift ($d\in\{0.5,1,2\}$). RF-stat never alarms because its benign scores under drift saturate at 1, which also removes all detection.}\label{tab:fprdcal}
+\small\input{tables/fpr_dcal.tex}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{ROC AUC at $d=0$ (mean over \nSeeds{} seeds).}\label{tab:aucd0}
+\small\input{tables/auc_d0.tex}
+\end{table}
+
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+\end{document}

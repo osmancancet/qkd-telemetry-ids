@@ -1,0 +1,273 @@
+\begin{thebibliography}{37}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Scarani et~al.(2009)Scarani, Bechmann-Pasquinucci, Cerf, Du{\v{s}}ek,
+  L{\"u}tkenhaus, and Peev]{scarani2009}
+Valerio Scarani, Helle Bechmann-Pasquinucci, Nicolas~J. Cerf, Miloslav
+  Du{\v{s}}ek, Norbert L{\"u}tkenhaus, and Momtchil Peev.
+\newblock {The security of practical quantum key distribution}.
+\newblock \emph{Reviews of Modern Physics}, 81:\penalty0 1301--1350, 2009.
+\newblock \doi{10.1103/RevModPhys.81.1301}.
+
+\bibitem[Xu et~al.(2020)Xu, Ma, Zhang, Lo, and Pan]{xu2020}
+Feihu Xu, Xiongfeng Ma, Qiang Zhang, Hoi-Kwong Lo, and Jian-Wei Pan.
+\newblock {Secure quantum key distribution with realistic devices}.
+\newblock \emph{Reviews of Modern Physics}, 92:\penalty0 025002, 2020.
+\newblock \doi{10.1103/RevModPhys.92.025002}.
+
+\bibitem[Makarov and Hjelme(2005)]{makarov2005}
+Vadim Makarov and Dag~R. Hjelme.
+\newblock {Faked states attack on quantum cryptosystems}.
+\newblock \emph{Journal of Modern Optics}, 52\penalty0 (5):\penalty0 691--705,
+  2005.
+\newblock \doi{10.1080/09500340410001730986}.
+
+\bibitem[Lydersen et~al.(2010)Lydersen, Wiechers, Wittmann, Elser, Skaar, and
+  Makarov]{lydersen2010}
+Lars Lydersen, Carlos Wiechers, Christoffer Wittmann, Dominique Elser, Johannes
+  Skaar, and Vadim Makarov.
+\newblock {Hacking commercial quantum cryptography systems by tailored bright
+  illumination}.
+\newblock \emph{Nature Photonics}, 4:\penalty0 686--689, 2010.
+\newblock \doi{10.1038/nphoton.2010.214}.
+
+\bibitem[Gerhardt et~al.(2011)Gerhardt, Liu, Lamas-Linares, Skaar, Kurtsiefer,
+  and Makarov]{gerhardt2011}
+Ilja Gerhardt, Qin Liu, Ant{\'i}a Lamas-Linares, Johannes Skaar, Christian
+  Kurtsiefer, and Vadim Makarov.
+\newblock {Full-field implementation of a perfect eavesdropper on a quantum
+  cryptography system}.
+\newblock \emph{Nature Communications}, 2:\penalty0 349, 2011.
+\newblock \doi{10.1038/ncomms1348}.
+
+\bibitem[Bennett and Brassard(2014)]{bennett2014}
+Charles~H. Bennett and Gilles Brassard.
+\newblock {Quantum cryptography: Public key distribution and coin tossing}.
+\newblock \emph{Theoretical Computer Science}, 560:\penalty0 7--11, 2014.
+\newblock \doi{10.1016/j.tcs.2014.05.025}.
+
+\bibitem[Hwang(2003)]{hwang2003}
+Won-Young Hwang.
+\newblock {Quantum key distribution with high loss: Toward global secure
+  communication}.
+\newblock \emph{Physical Review Letters}, 91:\penalty0 057901, 2003.
+\newblock \doi{10.1103/PhysRevLett.91.057901}.
+
+\bibitem[Lo et~al.(2005)Lo, Ma, and Chen]{lo2005}
+Hoi-Kwong Lo, Xiongfeng Ma, and Kai Chen.
+\newblock {Decoy state quantum key distribution}.
+\newblock \emph{Physical Review Letters}, 94:\penalty0 230504, 2005.
+\newblock \doi{10.1103/PhysRevLett.94.230504}.
+
+\bibitem[Wang(2005)]{wang2005}
+Xiang-Bin Wang.
+\newblock {Beating the photon-number-splitting attack in practical quantum
+  cryptography}.
+\newblock \emph{Physical Review Letters}, 94:\penalty0 230503, 2005.
+\newblock \doi{10.1103/PhysRevLett.94.230503}.
+
+\bibitem[Dixon et~al.(2010)Dixon, Yuan, Dynes, Sharpe, and Shields]{dixon2010}
+A.~R. Dixon, Z.~L. Yuan, J.~F. Dynes, A.~W. Sharpe, and A.~J. Shields.
+\newblock {Continuous operation of high bit rate quantum key distribution}.
+\newblock \emph{Applied Physics Letters}, 96:\penalty0 161102, 2010.
+\newblock \doi{10.1063/1.3385293}.
+
+\bibitem[Dynes et~al.(2012)Dynes, Choi, Sharpe, Dixon, Yuan, Fujiwara, Sasaki,
+  and Shields]{dynes2012}
+J.~F. Dynes, I.~Choi, A.~W. Sharpe, A.~R. Dixon, Z.~L. Yuan, M.~Fujiwara,
+  M.~Sasaki, and A.~J. Shields.
+\newblock {Stability of high bit rate quantum key distribution on installed
+  fiber}.
+\newblock \emph{Optics Express}, 20\penalty0 (15):\penalty0 16339, 2012.
+\newblock \doi{10.1364/OE.20.016339}.
+
+\bibitem[Stucki et~al.(2011)]{stucki2011}
+D.~Stucki et~al.
+\newblock {Long-term performance of the SwissQuantum quantum key distribution
+  network in a field environment}.
+\newblock \emph{New Journal of Physics}, 13:\penalty0 123001, 2011.
+\newblock \doi{10.1088/1367-2630/13/12/123001}.
+
+\bibitem[Mao et~al.(2020)Mao, Huang, Zhong, Wang, Qin, Guo, and Huang]{mao2020}
+Yiyu Mao, Weinan Huang, Hai Zhong, Yijun Wang, Hao Qin, Ying Guo, and Duan
+  Huang.
+\newblock {Detecting quantum attacks: a machine learning based defense strategy
+  for practical continuous-variable quantum key distribution}.
+\newblock \emph{New Journal of Physics}, 22:\penalty0 083073, 2020.
+\newblock \doi{10.1088/1367-2630/aba8d4}.
+
+\bibitem[Liao et~al.(2022)Liao, Wang, Liu, Mao, and Fu]{liao2022}
+Qin Liao, Zheng Wang, Haijie Liu, Yiyu Mao, and Xiquan Fu.
+\newblock {Detecting practical quantum attacks for continuous-variable quantum
+  key distribution using density-based spatial clustering of applications with
+  noise}.
+\newblock \emph{Physical Review A}, 106:\penalty0 022607, 2022.
+\newblock \doi{10.1103/PhysRevA.106.022607}.
+
+\bibitem[Al-Kuwari et~al.(2026)Al-Kuwari, Mohamed, Al-Kuwari, Farouk, and
+  Behera]{alkuwari2026}
+Ali Al-Kuwari, Noureldin Mohamed, Saif Al-Kuwari, Ahmed Farouk, and Bikash~K.
+  Behera.
+\newblock {Resisting quantum key distribution attacks using quantum machine
+  learning}.
+\newblock \emph{IET Quantum Communication}, 7\penalty0 (1):\penalty0 e70028,
+  2026.
+\newblock \doi{10.1049/qtc2.70028}.
+
+\bibitem[Isha et~al.(2026)Isha, Singh, Kumar, Pal, Hambarde, and
+  Shukla]{isha2026}
+Isha, Deepak Singh, Devesh Kumar, S.~K. Pal, Praful Hambarde, and Amit Shukla.
+\newblock {Beyond the QBER threshold: A temporal QBER based machine learning
+  framework for multi attack detection in BB84 QKD}.
+\newblock arXiv:2608.04047, 2026.
+
+\bibitem[Mohamed and Al-Kuwari(2026)]{mohamed2026}
+Noureldin Mohamed and Saif Al-Kuwari.
+\newblock {Adversarial learning game for intrusion detection in quantum key
+  distribution}.
+\newblock arXiv:2603.03502, 2026.
+
+\bibitem[Lim et~al.(2014)Lim, Curty, Walenta, Xu, and Zbinden]{lim2014}
+Charles Ci~Wen Lim, Marcos Curty, Nino Walenta, Feihu Xu, and Hugo Zbinden.
+\newblock {Concise security bounds for practical decoy-state quantum key
+  distribution}.
+\newblock \emph{Physical Review A}, 89:\penalty0 022307, 2014.
+\newblock \doi{10.1103/PhysRevA.89.022307}.
+
+\bibitem[Ma et~al.(2005)Ma, Qi, Zhao, and Lo]{ma2005}
+Xiongfeng Ma, Bing Qi, Yi~Zhao, and Hoi-Kwong Lo.
+\newblock {Practical decoy state for quantum key distribution}.
+\newblock \emph{Physical Review A}, 72:\penalty0 012326, 2005.
+\newblock \doi{10.1103/PhysRevA.72.012326}.
+
+\bibitem[Lo et~al.(2012)Lo, Curty, and Qi]{lo2012}
+Hoi-Kwong Lo, Marcos Curty, and Bing Qi.
+\newblock {Measurement-device-independent quantum key distribution}.
+\newblock \emph{Physical Review Letters}, 108:\penalty0 130503, 2012.
+\newblock \doi{10.1103/PhysRevLett.108.130503}.
+
+\bibitem[Yuan et~al.(2010)Yuan, Dynes, and Shields]{yuan2010}
+Z.~L. Yuan, J.~F. Dynes, and A.~J. Shields.
+\newblock {Avoiding the blinding attack in QKD}.
+\newblock \emph{Nature Photonics}, 4:\penalty0 800--801, 2010.
+\newblock \doi{10.1038/nphoton.2010.269}.
+
+\bibitem[Lim et~al.(2015)Lim, Walenta, Legr{\'e}, Gisin, and Zbinden]{lim2015}
+Charles Ci~Wen Lim, Nino Walenta, Matthieu Legr{\'e}, Nicolas Gisin, and Hugo
+  Zbinden.
+\newblock {Random variation of detector efficiency: A countermeasure against
+  detector blinding attacks for quantum key distribution}.
+\newblock \emph{IEEE Journal of Selected Topics in Quantum Electronics},
+  21\penalty0 (3):\penalty0 192--196, 2015.
+\newblock \doi{10.1109/JSTQE.2015.2389528}.
+
+\bibitem[Brassard et~al.(2000)Brassard, L{\"u}tkenhaus, Mor, and
+  Sanders]{brassard2000}
+Gilles Brassard, Norbert L{\"u}tkenhaus, Tal Mor, and Barry~C. Sanders.
+\newblock {Limitations on practical quantum cryptography}.
+\newblock \emph{Physical Review Letters}, 85:\penalty0 1330--1333, 2000.
+\newblock \doi{10.1103/PhysRevLett.85.1330}.
+
+\bibitem[Tomamichel et~al.(2012)Tomamichel, Lim, Gisin, and
+  Renner]{tomamichel2012}
+Marco Tomamichel, Charles Ci~Wen Lim, Nicolas Gisin, and Renato Renner.
+\newblock {Tight finite-key analysis for quantum cryptography}.
+\newblock \emph{Nature Communications}, 3:\penalty0 634, 2012.
+\newblock \doi{10.1038/ncomms1631}.
+
+\bibitem[Pirandola et~al.(2020)]{pirandola2020}
+S.~Pirandola et~al.
+\newblock {Advances in quantum cryptography}.
+\newblock \emph{Advances in Optics and Photonics}, 12\penalty0 (4):\penalty0
+  1012, 2020.
+\newblock \doi{10.1364/AOP.361502}.
+
+\bibitem[Zhao et~al.(2008)Zhao, Fung, Qi, Chen, and Lo]{zhao2008}
+Yi~Zhao, Chi-Hang~Fred Fung, Bing Qi, Christine Chen, and Hoi-Kwong Lo.
+\newblock {Quantum hacking: Experimental demonstration of time-shift attack
+  against practical quantum-key-distribution systems}.
+\newblock \emph{Physical Review A}, 78:\penalty0 042333, 2008.
+\newblock \doi{10.1103/PhysRevA.78.042333}.
+
+\bibitem[Gisin et~al.(2006)Gisin, Fasel, Kraus, Zbinden, and
+  Ribordy]{gisin2006}
+N.~Gisin, S.~Fasel, B.~Kraus, H.~Zbinden, and G.~Ribordy.
+\newblock {Trojan-horse attacks on quantum-key-distribution systems}.
+\newblock \emph{Physical Review A}, 73:\penalty0 022320, 2006.
+\newblock \doi{10.1103/PhysRevA.73.022320}.
+
+\bibitem[Lucamarini et~al.(2015)Lucamarini, Choi, Ward, Dynes, Yuan, and
+  Shields]{lucamarini2015}
+M.~Lucamarini, I.~Choi, M.~B. Ward, J.~F. Dynes, Z.~L. Yuan, and A.~J. Shields.
+\newblock {Practical security bounds against the Trojan-horse attack in quantum
+  key distribution}.
+\newblock \emph{Physical Review X}, 5:\penalty0 031030, 2015.
+\newblock \doi{10.1103/PhysRevX.5.031030}.
+
+\bibitem[Huang et~al.(2016)Huang, Sajeed, Chaiwongkhot, Soucarros, Legr{\'e},
+  and Makarov]{huang2016}
+Anqi Huang, Shihan Sajeed, Poompong Chaiwongkhot, Mathilde Soucarros, Matthieu
+  Legr{\'e}, and Vadim Makarov.
+\newblock {Testing random-detector-efficiency countermeasure in a commercial
+  system reveals a breakable unrealistic assumption}.
+\newblock \emph{IEEE Journal of Quantum Electronics}, 52\penalty0
+  (11):\penalty0 1--11, 2016.
+\newblock \doi{10.1109/JQE.2016.2611443}.
+
+\bibitem[Wang and Lo(2019)]{wang2019}
+Wenyuan Wang and Hoi-Kwong Lo.
+\newblock {Machine learning for optimal parameter prediction in quantum key
+  distribution}.
+\newblock \emph{Physical Review A}, 100:\penalty0 062334, 2019.
+\newblock \doi{10.1103/PhysRevA.100.062334}.
+
+\bibitem[Sasaki et~al.(2011)]{sasaki2011}
+M.~Sasaki et~al.
+\newblock {Field test of quantum key distribution in the Tokyo QKD Network}.
+\newblock \emph{Optics Express}, 19\penalty0 (11):\penalty0 10387, 2011.
+\newblock \doi{10.1364/OE.19.010387}.
+
+\bibitem[Gama et~al.(2014)Gama, {\v{Z}}liobait{\.e}, Bifet, Pechenizkiy, and
+  Bouchachia]{gama2014}
+Jo{\~a}o Gama, Indr{\.e} {\v{Z}}liobait{\.e}, Albert Bifet, Mykola Pechenizkiy,
+  and Abdelhamid Bouchachia.
+\newblock {A survey on concept drift adaptation}.
+\newblock \emph{ACM Computing Surveys}, 46\penalty0 (4):\penalty0 1--37, 2014.
+\newblock \doi{10.1145/2523813}.
+
+\bibitem[Page(1954)]{page1954}
+E.~S. Page.
+\newblock {Continuous inspection schemes}.
+\newblock \emph{Biometrika}, 41:\penalty0 100--115, 1954.
+\newblock \doi{10.1093/biomet/41.1-2.100}.
+
+\bibitem[Liu et~al.(2008)Liu, Ting, and Zhou]{liu2008}
+Fei~Tony Liu, Kai~Ming Ting, and Zhi-Hua Zhou.
+\newblock {Isolation forest}.
+\newblock In \emph{2008 Eighth IEEE International Conference on Data Mining},
+  pages 413--422, 2008.
+\newblock \doi{10.1109/ICDM.2008.17}.
+
+\bibitem[Breiman(2001)]{breiman2001}
+Leo Breiman.
+\newblock {Random forests}.
+\newblock \emph{Machine Learning}, 45:\penalty0 5--32, 2001.
+\newblock \doi{10.1023/A:1010933404324}.
+
+\bibitem[Wilcoxon(1945)]{wilcoxon1945}
+Frank Wilcoxon.
+\newblock {Individual comparisons by ranking methods}.
+\newblock \emph{Biometrics Bulletin}, 1\penalty0 (6):\penalty0 80--83, 1945.
+\newblock \doi{10.2307/3001968}.
+
+\bibitem[Holm(1979)]{holm1979}
+Sture Holm.
+\newblock {A simple sequentially rejective multiple test procedure}.
+\newblock \emph{Scandinavian Journal of Statistics}, 6\penalty0 (2):\penalty0
+  65--70, 1979.
+
+\end{thebibliography}
