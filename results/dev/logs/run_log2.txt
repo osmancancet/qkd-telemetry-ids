@@ -1,0 +1,10 @@
+seed 0 done in 105.9s
+seed 1 done in 106.4s
+seed 2 done in 94.7s
+seed 3 done in 92.7s
+seed 4 done in 84.6s
+seed 5 done in 87.7s
+seed 6 done in 84.4s
+seed 7 done in 88.2s
+seed 8 done in 89.3s
+seed 9 done in 90.0s

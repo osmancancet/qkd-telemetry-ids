@@ -16,7 +16,7 @@
 \linenumbers
 \onehalfspacing
 
-\title{What window telemetry can and cannot reveal about quantum hacking: a finite-key, drift-aware benchmark of intrusion detection for decoy-state QKD}
+\title{What count telemetry can and cannot reveal about detector-control attacks on decoy-state QKD: a drift-aware, finite-key benchmark}
 \author{Osman Can \c{C}etlenbik\\[2pt]
 \small Big Data Analytics Program, Department of Statistics, Manisa Technical Sciences Vocational School,\\
 \small Manisa Celal Bayar University, Manisa 45140, T\"urkiye\\
@@ -30,7 +30,7 @@
 \input{abstract.tex}
 \end{abstract}
 
-\noindent\textbf{Keywords:} quantum key distribution, decoy states, detector blinding, intrusion detection, concept drift, finite-key security
+\noindent\textbf{Keywords:} quantum key distribution, decoy states, detector blinding, intrusion detection, concept drift, finite-key security, anomaly detection
 
 \input{sec_intro.tex}
 \input{sec_background.tex}
@@ -48,14 +48,74 @@ The simulator, detectors, finite-key code, per-seed results and the scripts that
 \section{Supplementary tables}
 \begin{table}[h]
 \centering
-\caption{Per-window false-alarm rate (\%) when thresholds are calibrated on benign data with drift ($d\in\{0.5,1,2\}$). RF-stat never alarms because its benign scores under drift saturate at 1, which also removes all detection.}\label{tab:fprdcal}
-\small\input{tables/fpr_dcal.tex}
+\caption{Per-window false-alarm rate (\%) with the other calibration set, the opposite of each detector's default: drift-free data for IF-drift, RF-DR and RF-res, drifting data for all others. Mean with 95\% BCa interval over \nSeeds{} seeds.}\label{tab:fprctrl}
+\footnotesize\resizebox{\linewidth}{!}{\input{tables/fpr_ctrl.tex}}
 \end{table}
 
 \begin{table}[h]
 \centering
-\caption{ROC AUC at $d=0$ (mean over \nSeeds{} seeds).}\label{tab:aucd0}
-\small\input{tables/auc_d0.tex}
+\caption{Per-window false-alarm rate (\%) at $\alpha=1\%$, default calibration. Mean with 95\% BCa interval over \nSeeds{} seeds.}\label{tab:fpra2}
+\footnotesize\resizebox{\linewidth}{!}{\input{tables/fpr_a2.tex}}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Per-window false-alarm rate (\%) at $\alpha=0.01\%$, default calibration. Mean with 95\% BCa interval over \nSeeds{} seeds.}\label{tab:fpra4}
+\footnotesize\resizebox{\linewidth}{!}{\input{tables/fpr_a4.tex}}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Alarm episodes (maximal runs of consecutive alarmed windows) per 24-hour benign stream at $\alpha=0.1\%$, default calibration. Mean with 95\% BCa interval over \nSeeds{} seeds.}\label{tab:episodes}
+\footnotesize\resizebox{\linewidth}{!}{\input{tables/episodes.tex}}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Paired ROC AUC at $d=0$: mean over \nSeeds{} seeds, with the half-width of the 95\% BCa interval as subscript. $^*$: in the training distribution of the supervised detector; $^\ddagger$: interpolated between training strengths.}\label{tab:aucd0}
+\scriptsize\setlength{\tabcolsep}{2pt}\resizebox{\linewidth}{!}{\input{tables/auc_d0.tex}}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Paired ROC AUC at $d=0.25$: mean over \nSeeds{} seeds, with the half-width of the 95\% BCa interval as subscript. $^*$: in the training distribution of the supervised detector; $^\ddagger$: interpolated between training strengths.}\label{tab:aucdq}
+\scriptsize\setlength{\tabcolsep}{2pt}\resizebox{\linewidth}{!}{\input{tables/auc_dq.tex}}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Paired ROC AUC at $d=2$: mean over \nSeeds{} seeds, with the half-width of the 95\% BCa interval as subscript. $^*$: in the training distribution of the supervised detector; $^\ddagger$: interpolated between training strengths.}\label{tab:aucd2}
+\scriptsize\setlength{\tabcolsep}{2pt}\resizebox{\linewidth}{!}{\input{tables/auc_d2.tex}}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Paired ROC AUC at $d=4$: mean over \nSeeds{} seeds, with the half-width of the 95\% BCa interval as subscript. $^*$: in the training distribution of the supervised detector; $^\ddagger$: interpolated between training strengths.}\label{tab:aucd4}
+\scriptsize\setlength{\tabcolsep}{2pt}\resizebox{\linewidth}{!}{\input{tables/auc_d4.tex}}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{TPR at the default threshold, $\alpha=0.1\%$, $d=4$, with the benign false-alarm rate in the first row (mean over \nSeeds{} seeds).}\label{tab:tprd4}
+\scriptsize\setlength{\tabcolsep}{2pt}\resizebox{\linewidth}{!}{\input{tables/tpr_d4.tex}}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{TPR at matched FPR, $d=1$: each detector thresholded at the $(1-\alpha)$ quantile of its own benign scores at the same drift scale, $\alpha=0.1\%$ (oracle threshold; mean over \nSeeds{} seeds).}\label{tab:oracle1}
+\scriptsize\setlength{\tabcolsep}{2pt}\resizebox{\linewidth}{!}{\input{tables/tpr_oracle_d1.tex}}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{TPR at matched FPR, $d=4$ (as Table~\ref{tab:oracle1}).}\label{tab:oracle4}
+\scriptsize\setlength{\tabcolsep}{2pt}\resizebox{\linewidth}{!}{\input{tables/tpr_oracle_d4.tex}}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Change in total key length under attack relative to the paired honest copy of the same blocks (\%, mean over \nSeeds{} seeds).}\label{tab:pairedkey}
+\footnotesize\input{tables/paired_key.tex}
 \end{table}
 
 \bibliographystyle{unsrtnat}

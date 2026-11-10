@@ -1,25 +1,27 @@
 \section{Channel and threat model}\label{sec:model}
 
 \subsection{Protocol and telemetry}
-Alice emits phase-randomised weak coherent pulses at rate $R$ with intensity $k\in\mathcal{K}=\{\mu_1,\mu_2,\mu_3\}$, $\mu_1>\mu_2+\mu_3$, $\mu_2>\mu_3\geq0$, chosen with probabilities $p_k$, in basis $Z$ (key) with probability $p_Z$ or $X$ (test) otherwise. Bob uses two threshold detectors. Time is divided into monitoring windows of length $\Delta$. Window $t$ produces the telemetry vector
-\begin{equation}
-\mathbf{T}_t=\{N_{b,k}(t),\,n_{b,k}(t),\,m_{b,k}(t)\}_{b\in\{Z,X\},\,k\in\mathcal{K}},
+Alice emits phase-randomised weak coherent pulses at rate $R$ with intensity $k\in\mathcal{K}=\{\mu_1,\mu_2,\mu_3\}$, $\mu_1>\mu_2+\mu_3$, $\mu_2>\mu_3\geq0$, chosen with probabilities $p_k$, in basis $Z$ (key) with probability $p_Z^A$ or $X$ (test) otherwise. Bob measures in $Z$ with probability $p_Z^B$, independently, with two threshold detectors, and announces which pulses produced a click and in which basis; a click is sifted when the two bases agree. Time is divided into monitoring windows of length $\Delta$. Window $t$ produces the \emph{count telemetry}
+\begin{equation}\label{eq:telemetry}
+\mathbf{T}_t=\bigl\{N_{a,k}(t),\,n^{\rm all}_{a,k}(t),\,n_{a,k}(t),\,m_{a,k}(t),\,\hat\mu_k(t)\bigr\}_{a\in\{Z,X\},\,k\in\mathcal{K}}:
 \end{equation}
-the pulses sent together with the detections and bit errors per basis and intensity after sifting. A post-processing block aggregates $B$ consecutive windows and runs the finite-key analysis of \cite{lim2014}, which returns a key length $\ell$ (zero means abort).
+the pulses Alice sent in basis $a$ with intensity $k$, all clicks Bob announced for them, the sifted clicks, the sifted bit errors, and the per-window reading of Alice's intensity monitor. Timing, coincidence, afterpulse-correlation and photocurrent data are not part of $\mathbf{T}_t$; all statements below are about this count-level telemetry. A post-processing block aggregates $B$ consecutive windows and runs the finite-key analysis of \cite{lim2014} with the block mean of the monitored intensities. It returns a key length $\ell$ (zero means abort).
 
 \subsection{Honest channel and benign drift}
-Conditioned on an $n$-photon pulse, the honest channel with transmittance $\eta$ (fibre and detector), background yield $Y_0$ and misalignment $e_d$ produces a click with probability and error probability
+Conditioned on an $n$-photon pulse, the honest channel with transmittance $\eta$ (fibre and detector), background yield $Y_0$ and misalignment $e_d^b$ in basis $b$ produces a click with probability, and a sifted error with probability,
 \begin{equation}\label{eq:honest}
-y_n=1-(1-Y_0)(1-\eta)^n,\qquad e_n y_n=e_0Y_0+e_d\,(y_n-Y_0),
+y_n=1-(1-Y_0)(1-\eta)^n,\qquad e_{b,n}\,y_n=e_0Y_0+e_d^b\,(y_n-Y_0),
 \end{equation}
-with $e_0=1/2$ \cite{ma2005}. The gain of intensity $k$ is $Q_k=\sum_n P(n|k)\,y_n=1-(1-Y_0)e^{-\eta k}$. In window $t$ the parameters drift as
+with $e_0=1/2$ \cite{ma2005}. The gain of intensity $k$ is $Q_k=\sum_n P(n|k)\,y_n=1-(1-Y_0)e^{-\eta k}$. Two further benign effects are included. Afterpulses add, in every gate, a click with probability $p_{\rm ap}\bar Q$, where $\bar Q$ is the mean gain over all pulses; such a click falls on an unrelated later pulse and so carries a random bit. Because $\bar Q$ is common to all pulses of a window, the afterpulse background is the same for the three intensities and enters the decoy analysis as part of $Y_0$; at the nominal values it makes up about 97\% of the vacuum-like yield. Modelling it as an independent random-bit click per gate ignores its correlation with the preceding detection, which is a simplification of real detectors. Alice's intensities drift slowly, and her monitor reads them with a small error. Bob's two measurement paths and the polarisation-dependent loss of the link make the click probability depend slightly on Bob's and Alice's bases. In window $t$ the parameters evolve as
 \begin{align}
 L(t)&=\alpha\ell_f+d\,[A_L\sin(\omega t+\phi)+U_L(t)] \;\;\mathrm{dB},\qquad
 \eta(t)=\eta_B\,[1+d\,U_B(t)]\,10^{-L(t)/10},\\
-p_{dc}(t)&=p_{dc}\,[1+d\,A_D\sin(\omega t+\phi-0.5)],\qquad
-e_d(t)=e_{\mathrm{mis}}+d\,s_j\,(t-t_j),\quad t\in[t_j,t_j+T_c),
+p_{dc}(t),\,p_{\rm ap}(t)&\propto 1+d\,A_D\sin(\omega t+\phi-0.5),\qquad
+e_d^b(t)=e_{\mathrm{mis}}^b+d\,s_j^b\,(t-t_j),\quad t\in[t_j,t_j+T_c),\\
+\mu_k(t)&=\mu_k\,[1+d\,U_{I,k}(t)]\,(1+\xi_{k,t}),\qquad \hat\mu_k(t)=\mu_k(t)\,[1+\beta_k(t)]\,(1+\zeta_{k,t}),\\
+\Pr[\text{click},\,b\mid n,a](t)&=p^B_b\,y_n(t)\,[1+d\,U_{A,a}(t)]\,[1+d\,U_{P,b}(t)],
 \end{align}
-where $\omega=2\pi/24\,$h, $U_L$ and $U_B$ are Ornstein--Uhlenbeck processes, and the misalignment grows linearly at a random slope $s_j$ until an active compensation at period $T_c$ resets it. The scale $d$ switches drift off ($d=0$, the calibration regime) or amplifies it. Independently of $d$, every window carries a relative intensity fluctuation $\mu_k\to\mu_k(1+\xi_{k,t})$, $\xi_{k,t}\sim\mathcal{N}(0,\sigma_I^2)$, which the detectors do not observe. Table~\ref{tab:params} lists the values. They are assumptions chosen to reproduce the qualitative behaviour reported for installed fibre, slow loss variation and misalignment growth between compensations \cite{dixon2010,dynes2012}; they are not fitted to a specific link, and Section~\ref{sec:sens} varies the most influential ones.
+where $\omega=2\pi/24\,$h; $U_L$, $U_B$, $U_{I,k}$, $U_{P,b}$ (efficiency of Bob's basis-$b$ path) and $U_{A,a}$ (transmission of Alice's basis-$a$ states) are Ornstein--Uhlenbeck processes, and $\beta_k$ is a slow monitor bias, zero in the main runs and varied in Section~\ref{sec:sens}; the misalignment of each basis grows at its own random slope $s_j^b$ until an active compensation at period $T_c$ resets it; $\xi_{k,t}\sim\mathcal{N}(0,\sigma_I^2)$ is fast per-window intensity noise and $\zeta_{k,t}\sim\mathcal{N}(0,\sigma_M^2)$ the monitor error. The scale $d$ switches slow drift off ($d=0$, the calibration regime) or amplifies it. Table~\ref{tab:params} lists the values. They are assumptions chosen to reproduce the qualitative behaviour reported for installed fibre, slow loss variation and misalignment growth between compensations \cite{dixon2010,dynes2012}; they are not fitted to a specific link, and Section~\ref{sec:sens} varies the most influential ones. A mismatch between the two detectors of one basis, which would make the error rate depend on the bit value, and detector dead time are not modelled.
 
 \begin{table}[t]
 \centering
@@ -31,15 +33,20 @@ Quantity & Symbol & Value \\
 \hline
 Pulse rate, window length & $R$, $\Delta$ & 100 MHz, 10 s \\
 Intensities, probabilities & $\mu_k$, $p_k$ & (0.5, 0.1, $2\times10^{-4}$), (0.7, 0.2, 0.1) \\
-Key-basis probability & $p_Z$ & 0.9 \\
+Basis probabilities (Alice, Bob) & $p_Z^A$, $p_Z^B$ & 0.9, 0.9 \\
 Fibre length, attenuation & $\ell_f$, $\alpha$ & 50 km, 0.2 dB/km \\
 Detector efficiency, dark count & $\eta_B$, $p_{dc}$ & 0.10, $6\times10^{-7}$ per gate \\
-Base misalignment & $e_{\mathrm{mis}}$ & 1\% \\
+Afterpulse probability & $p_{\rm ap}$ & 1\% \\
+Base misalignment ($Z$, $X$) & $e^Z_{\mathrm{mis}}$, $e^X_{\mathrm{mis}}$ & 1.0\%, 1.2\% \\
 Diurnal loss amplitude; OU loss s.d., time constant & $A_L$; $\sigma_L$, $\tau_L$ & 0.3 dB; 0.15 dB, 30 min \\
 Detector-efficiency OU s.d. (relative), time constant & $\sigma_B$, $\tau_B$ & 2\%, 60 min \\
-Dark-count diurnal swing (relative) & $A_D$ & 10\% \\
-Misalignment growth, compensation period & $s_j$, $T_c$ & $U(0.5,1.5)\times$1\%/h, 1 h \\
-Intensity noise (per window, relative) & $\sigma_I$ & 1\% \\
+Dark-count and afterpulse diurnal swing (relative) & $A_D$ & 10\% \\
+Misalignment growth per basis, compensation period & $s_j^b$, $T_c$ & $U(0.5,1.5)\times$1\%/h, 1 h \\
+Slow intensity drift: OU s.d. (relative), time constant & $\sigma_{IU}$, $\tau_I$ & 1\%, 2 h \\
+Fast intensity noise; monitor error (relative) & $\sigma_I$; $\sigma_M$ & 1\%; 0.2\% \\
+Monitor bias: OU s.d. (relative), time constant & $\sigma_\beta$, $\tau_\beta$ & 0; 2 h \\
+Bob basis-path efficiency: OU s.d. (relative), time constant & $\sigma_P$, $\tau_P$ & 0.5\%, 60 min \\
+Alice-basis transmission (PDL): OU s.d. (relative), time constant & $\sigma_A$, $\tau_A$ & 0.25\%, 30 min \\
 Post-processing block & $B$ & 60 windows ($6\times10^{10}$ pulses) \\
 Security parameters & $\varepsilon_{\mathrm{sec}}$, $\varepsilon_{\mathrm{cor}}$, $f_{\mathrm{EC}}$ & $10^{-10}$, $10^{-15}$, 1.16 \\
 Stream length & & 8\,640 windows (24 h) \\
@@ -48,48 +55,60 @@ Stream length & & 8\,640 windows (24 h) \\
 \end{table}
 
 \subsection{Threat model}
-Eve controls the quantum channel and may illuminate Bob's detectors. She cannot read Alice's intensity or basis choices before the public announcement, and she has no access to the classical post-processing beyond what is announced. Every attack is described by the photon-number functions $(y_n,e_n,\kappa_n)$, where $\kappa_n$ is the fraction of resulting clicks whose sifted bit Eve knows exactly. Table~\ref{tab:attacks} lists the attacks. Where the cited attack descriptions match Bob's signal gain, so do ours.
+Eve controls the quantum channel and may illuminate Bob's detectors. She cannot read Alice's intensity or basis choices before the public announcement, and she sees only what is announced in the classical post-processing. We restrict her to attacks that act independently and identically on every pulse given its photon number (collective attacks at the pulse level), so that each attack is described by the functions $(y_n,e_{b,n},\kappa_n)$, where $y_n$ is Bob's click probability, $e_{b,n}$ the sifted error probability in basis $b$ and $\kappa_n$ the fraction of sifted clicks whose key bit Eve knows exactly. In the simulator the basis factors $[1+dU_{A,a}][1+dU_{P,b}]$ multiply attacked and honest click probabilities alike. For the Alice-basis factor this places the polarisation-dependent loss before Eve, so that her detections inherit it; for the path factor of Bob it assumes that Eve emulates it, which an attacker who reproduces the honest law must do anyway and which is immaterial for the four-residual statistics, which do not use basis balance. Blind-static and Blind-track therefore still carry the basis factors. We also take Alice's source and intensity monitor as trusted: attacks that change the mean photon number or the monitor reading \cite{sajeed2015,huang2019} are outside this study. Coherent or adaptive attacks across pulses are outside this description. Table~\ref{tab:attacks} lists the attacks; where the cited attack descriptions match Bob's signal gain, so do ours.
+
+The attacks differ in what Eve knows. IR, PNS, Blind-naive, Blind-gain, Blind-nobg, Blind-thresh, Blind-cal and Blind-sub are given the current window's channel parameters $\eta(t)$, $Y_0(t)$ and $e^b_d(t)$; they are oracle attackers and bound what such knowledge buys. Blind-static knows only the nominal values and Blind-track additionally the fibre loss, which Eve can measure on the line herself. Blind-lag uses only public information: it estimates $(\eta,Y_0,e^Z_d,e^X_d)$ from the announced counts of the 30 windows (5 minutes) before onset with the refit of Section~\ref{sec:dcs}, then tracks the fibre loss and keeps the detector parameters frozen.
+
+All faked-state variants use the same mechanism. Eve measures each pulse in $Z$ or $X$ with probability $1/2$ and resends a bright faked state in her basis; a blinded detector pair clicks only when Bob's basis equals hers \cite{makarov2005,lydersen2010}. To give Bob the same click probability $y_n$ in both bases she forwards with probability $2y_n$, which requires $y_n\leq1/2$. A click she injects on an empty pulse carries no information on Alice's bit, so it has error probability $1/2$ and $\kappa_0=0$; on a non-empty pulse her measurement basis equals the sifted basis and $\kappa_n=1$. Blinded detectors produce neither dark counts nor afterpulses unless Eve emulates them.
 
 \begin{table}[t]
 \centering
-\caption{Attacker configurations. ``In model'' marks attacks covered by the decoy-state security proof; the others violate its detector assumptions.}\label{tab:attacks}
+\caption{Attacker configurations. ``In model'' marks attacks covered by the decoy-state security proof; the others violate its detector assumptions. Faked-state variants share the mechanism described in the text.}\label{tab:attacks}
 \small
-\begin{tabular}{p{2.6cm}p{8.6cm}c}
+\begin{tabular}{p{2.4cm}p{8.8cm}c}
 \hline
 Name & Mechanism & In model \\
 \hline
-IR, $f$ & Intercept-resend on a fraction $f$ of non-empty pulses; resend intensity chosen so that $Q_{\mu_1}$ is unchanged & yes \\
-PNS & Lossless channel; single photons blocked, one photon of each multi-photon pulse forwarded with the probability that matches $Q_{\mu_1}$ (capped at 1) \cite{brassard2000} & yes \\
+IR, $f$ & Intercept-resend in a random basis on a fraction $f$ of non-empty pulses with an ideal detector; one resend yield for all $n\geq1$, chosen so that $Q_{\mu_1}$ is unchanged & yes \\
+PNS & Lossless channel; single photons blocked, one photon of each multi-photon pulse forwarded with the probability that matches $Q_{\mu_1}$ (capped at 1); Eve knows $\eta_B$ and holds the photon in a quantum memory until the basis announcement \cite{brassard2000} & yes \\
 Loss $+\delta$ & Extra attenuation of $\delta$ dB (denial of service) & yes \\
-Blind-naive & Faked states \cite{makarov2005,lydersen2010} from a threshold detector; forwarding probability matches $Q_{\mu_1}$; no dark counts, no deliberate errors & no \\
-Blind-gain & Faked states with a photon-number-resolving detector; reproduces every $y_n$ but adds no errors & no \\
-Blind-nodark & Reproduces the signal part of $y_n$ and the misalignment errors; blinded detectors give no dark counts & no \\
-Blind-cal & Reproduces $(y_n,e_n)$ of the current honest channel exactly (Proposition~\ref{prop:indist}) & no \\
-Blind-cal-static & As Blind-cal, but for the nominal channel of Table~\ref{tab:params} without drift & no \\
+Blind-naive & Eve detects every non-empty pulse (a unit-efficiency threshold detector in a random basis) and forwards each detection with a fixed probability chosen to match $Q_{\mu_1}$, so $y_n$ is the same for all $n\geq1$; no background, no deliberate errors & no \\
+Blind-gain & Reproduces every $y_n$, including injected background clicks, but adds no errors to non-empty pulses; no afterpulses & no \\
+Blind-nobg & Reproduces the photon part of $y_n$ and the misalignment errors; no background clicks (dark counts or afterpulses) & no \\
+Blind-thresh & Eve's own threshold detector behind an attenuator: she forwards each of her clicks and injects a random-bit click with probability $2Y_0$ when her detector is silent, so $y_n=Y_0+(1/2-Y_0)[1-(1-\eta_E)^n]$ with $\eta_E$ set to match $Q_{\mu_1}$; misalignment errors and afterpulses emulated & no \\
+Blind-cal & Reproduces $(y_n,e_{b,n})$ of the current honest channel exactly, afterpulses included (Proposition~\ref{prop:indist}) & no \\
+Blind-static & As Blind-cal, for the nominal channel of Table~\ref{tab:params} without any drift & no \\
+Blind-track & As Blind-cal, but tracks only the fibre loss; detector efficiency, dark counts, misalignment and afterpulses stay at nominal values & no \\
+Blind-lag & As Blind-cal, with $\eta$ (detector part), $Y_0$ and $e^b_d$ estimated from public counts of the 30 windows before onset and then frozen; tracks the fibre loss & no \\
+Blind-sub & As Blind-cal, but with background lowered to $0.3\,Y_0(t)$ and misalignment to $0.6\,e^b_d(t)$, just above the floors of DCS+F (Section~\ref{sec:sens}) & no \\
+Blind-partial & Blind-naive on a random 10\% of pulses, honest channel on the rest & no \\
 \hline
 \end{tabular}
 \end{table}
 
-\section{What telemetry can and cannot reveal}\label{sec:limits}
+\section{What count telemetry can and cannot reveal}\label{sec:limits}
 
-Alice's photon-number distribution is fixed by her source, and each pulse is processed independently given its photon number. The window counts are therefore sums of independent Bernoulli variables whose parameters depend on the attack only through $(y_n,e_n)$. This gives the following statement.
+Under the threat model the window counts are sums of independent indicator variables whose parameters depend on the attack only through $(y_n,e_{b,n})$. This gives the following statement, which is elementary and is not claimed as a contribution in itself; it fixes the boundary against which the benchmark is read.
 
 \begin{proposition}[Telemetry indistinguishability]\label{prop:indist}
-Let $(y_n(t),e_n(t))$ be the honest yields and error probabilities of window $t$, and let an attack induce $(\tilde y_n(t),\tilde e_n(t))$. If $\tilde y_n(t)=y_n(t)$ and $\tilde e_n(t)=e_n(t)$ for all $n$ and $t$, the joint law of $(\mathbf{T}_1,\dots,\mathbf{T}_W)$ under the attack equals the honest law. For every detector $\phi$ that maps telemetry to alarms, $\Pr_{\mathrm{attack}}[\phi=1]=\Pr_{\mathrm{honest}}[\phi=1]$; the ROC curve of $\phi$ is the diagonal, and the finite-key length $\ell$ has the same distribution in both cases.
+Consider attacks that act independently and identically on pulses given their photon number. Let $y_n^{a,b}(t)$ be the honest probability that an $n$-photon pulse sent by Alice in basis $a$ produces a click that Bob registers in basis $b$, and $e_{b,n}(t)$ the honest error probability of a sifted click in basis $b$, in window $t$; afterpulse clicks are included in $y_0$ and carry an independent random bit. Let an attack induce $\tilde y_n^{a,b}(t)$ and $\tilde e_{b,n}(t)$. If $\tilde y_n^{a,b}(t)=y_n^{a,b}(t)$ and $\tilde e_{b,n}(t)=e_{b,n}(t)$ for all $n$, $a$, $b$ and $t$, the joint law of $(\mathbf{T}_1,\dots,\mathbf{T}_W)$ under the attack equals the honest law. For every detector $\phi$ that maps count telemetry to alarms, $\Pr_{\mathrm{attack}}[\phi=1]=\Pr_{\mathrm{honest}}[\phi=1]$, the ROC curve of $\phi$ is the diagonal, and the finite-key length $\ell$ has the same distribution in both cases.
 \end{proposition}
 
 \begin{proof}
-Given Alice's settings $(b,k)$ for a pulse, its photon number is Poisson with mean $k$ (with $k$ the realised intensity) and independent of everything else. A click and its error indicator are then Bernoulli with parameters $\sum_n P(n|k)\tilde y_n$ and $\sum_n P(n|k)\tilde y_n\tilde e_n/\sum_n P(n|k)\tilde y_n$, independently across pulses. These parameters coincide with the honest ones, so $(N_{b,k},n_{b,k},m_{b,k})$ have the same multinomial--binomial law in every window, and the same holds for any function of them, such as $\phi$ and $\ell$.
+Given Alice's settings $(a,k)$ for a pulse, its photon number is Poisson with the realised mean $\mu_k(t)$ and independent of everything else; the monitor reading depends on Alice's source only. Whether the pulse produces a click registered in Bob's basis $b$, and whether a sifted click ($b=a$) is in error, are then categorical variables, independent across pulses, with probabilities
+\begin{equation*}
+\sum_n P(n|k)\,\tilde y^{a,b}_n,\qquad \frac{\sum_n P(n|k)\,\tilde y^{a,a}_n\tilde e_{a,n}}{\sum_n P(n|k)\,\tilde y^{a,a}_n}.
+\end{equation*} These coincide with the honest ones, so the counts of (\ref{eq:telemetry}) have the same multinomial--binomial law in every window, and so does any function of them, such as $\phi$ and $\ell$.
 \end{proof}
 
-The statement is elementary, and the perfect eavesdropper of \cite{gerhardt2011} is an instance of it; its use here is to bound what any telemetry detector, learned or not, can achieve. The hypothesis is achievable. A faked-state attacker who blinds Bob's detectors forces a click only when Bob's basis matches hers, which happens with probability $1/2$. If she measures each pulse with a photon-number-resolving detector, forwards an $n$-photon outcome with probability $2y_n(t)$, injects a click for a fraction of empty pulses that reproduces $Y_0$, and flips the forwarded bit with probability $e_n(t)$, she meets the hypothesis whenever $2y_n(t)\leq1$; for the parameters used here this holds for every $n$ whose Poisson weight exceeds $10^{-30}$. After sifting, Alice's basis equals Bob's and hence Eve's, so Eve knows every sifted bit; she also knows which of them she flipped. The attack requires knowledge of $\eta(t)$, $Y_0(t)$ and $e_d(t)$; an eavesdropper who owns the fibre can estimate them from her own measurements of the line, and Section~\ref{sec:results} also evaluates an attacker who ignores drift.
+The perfect eavesdropper of \cite{gerhardt2011}, on an entanglement-based link without decoy states, is an analogue. Independence across pulses is part of the hypothesis: clicks that are correlated between consecutive pulses, whether through the attack or through real afterpulsing, are not covered by the proof, and their effect on window counts would have to be bounded separately. The hypothesis is achievable with the mechanism above whenever $y_n\leq1/2$, which holds here for every $n$ with Poisson weight above $10^{-30}$; if Eve chose $Z$ with probability $q\neq1/2$ and adapted her forwarding probability to her basis, the condition would become $y_n\leq\min(q,1-q)$. The mechanism also assumes that the blinded detectors are controlled perfectly and produce no double clicks. Blind-cal meets it exactly. Blind-thresh shows that a photon-number-resolving detector is not needed in practice: with an attenuated threshold detector of efficiency $\eta_E\approx2\eta$, the induced yields for $n\geq2$ differ from the honest ones by $O(\eta^2)$ in absolute and $O(\eta)$ in relative terms, which changes the decoy gain by about 0.2\% here. Both attacks require knowledge of $\eta(t)$, $Y_0(t)$ and $e_d^b(t)$, or of their effect on the counts; an eavesdropper who owns the fibre can estimate the loss from her own measurements of the line. Blind-static, Blind-track and Blind-lag model attackers with less knowledge. The proposition says nothing about richer telemetry. Coincidence statistics \cite{gras2021}, inter-detection timing \cite{dasilva2012}, variable attenuation at Bob \cite{qian2019} or background-noise cancellation \cite{lee2016} add observables whose law a faked-state attacker does not reproduce automatically, and these are where the hypothesis can fail.
 
 \begin{remark}[In-model attacks]\label{rem:inmodel}
-Intercept-resend and PNS act only on the quantum channel, as does added loss. The finite-key bound of \cite{lim2014} is $\varepsilon_{\mathrm{sec}}$-secret against such attacks, so every key it outputs is already secure; a telemetry detector can shorten the time to incident response or flag a denial of service, but it cannot add secrecy. Conversely, for attacks outside the model the bound can certify a key that Eve knows. Telemetry detection matters for security only in the second case, and Proposition~\ref{prop:indist} limits it to attackers who do not reproduce the honest statistics.
+Intercept-resend and PNS act only on the quantum channel, as does added loss. The finite-key bound of \cite{lim2014} is $\varepsilon_{\mathrm{sec}}$-secret against such attacks within its assumptions, which include a trusted source with known intensities, so every key it outputs is already secure; a telemetry detector can shorten the time to incident response or flag a denial of service, but it cannot add secrecy. For attacks outside the model the bound can certify a key that Eve knows. Telemetry detection matters for security only in the second case, and Proposition~\ref{prop:indist} limits it to attackers who do not reproduce the honest statistics.
 \end{remark}
 
-To audit secrecy in the simulations without trusting the bound, every click carries a ground-truth flag stating whether Eve knows its sifted bit. With $K_E$ known bits among the $n_Z$ sifted key bits of a block, the smooth min-entropy of the sifted key given Eve's information is at most $n_Z-K_E$ up to terms of order $\log(1/\varepsilon)$, so a block with
+To audit secrecy in the simulations without trusting the bound, every sifted click carries a ground-truth flag stating whether Eve knows its key bit. Let $Z$ be the sifted key of a block, $C$ the public communication and $E$ Eve's system, and let $K_E$ of the $n_Z$ bits of $Z$ be known to Eve exactly. The key $K$ is a function of $Z$ and $C$, so for von Neumann entropies $H(K|EC)\le H(Z|EC)\le H(Z|E)\le n_Z-K_E$. If the key is $\varepsilon$-close in trace distance to a uniform key of length $\ell$ independent of $EC$, the Alicki--Fannes--Winter continuity bound gives $H(K|EC)\ge(1-\varepsilon)\ell-(1+\varepsilon)h\bigl(\varepsilon/(1+\varepsilon)\bigr)$. A block with
 \begin{equation}\label{eq:breach}
-\ell>n_Z-K_E
+\ell>\frac{n_Z-K_E+(1+\varepsilon)\,h\bigl(\varepsilon/(1+\varepsilon)\bigr)}{1-\varepsilon},\qquad \varepsilon=\varepsilon_{\rm sec}=10^{-10},
 \end{equation}
-cannot be $\varepsilon$-secret for small $\varepsilon$. We call such a block a \emph{breach}. The test is one-sided: $\ell\leq n_Z-K_E$ does not prove secrecy, because Eve may hold further partial information. It also checks the bound itself, since the true single-photon detections are recorded and must exceed the lower bound $s_{Z,1}$ in honest operation.
+is inconsistent with $\varepsilon_{\rm sec}$-secrecy of that block's key. We call such a block a \emph{breach}. Strictly, $\varepsilon$-secrecy is a statement about the ensemble of runs, weighted by the probability of not aborting; a breach frequency that is far above $\varepsilon_{\rm sec}$, as found here for the faked-state attacks, contradicts it. The test is one-sided: $\ell\leq n_Z-K_E$ does not prove secrecy, because Eve may hold further partial information. It also has power only when Eve knows more than a fraction $1-\ell/n_Z$ of the sifted bits, about 75\% at the honest key rate, so it cannot confirm Remark~\ref{rem:inmodel} for intercept-resend or PNS; for those the security of the released key rests on the proof, not on the audit. For the faked-state attacks $K_E$ follows from $\kappa_n$ by construction, so the breach share measures how often the bound outputs a key at all under the attack; it is an audit of the accounting, not an independent finding. The simulation also records the true single-photon detections, which must exceed the lower bound $s_{Z,1}$ in honest operation.

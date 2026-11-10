@@ -1,4 +1,4 @@
-\begin{thebibliography}{37}
+\begin{thebibliography}{48}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -138,17 +138,21 @@ Charles Ci~Wen Lim, Marcos Curty, Nino Walenta, Feihu Xu, and Hugo Zbinden.
 \newblock \emph{Physical Review A}, 89:\penalty0 022307, 2014.
 \newblock \doi{10.1103/PhysRevA.89.022307}.
 
-\bibitem[Ma et~al.(2005)Ma, Qi, Zhao, and Lo]{ma2005}
-Xiongfeng Ma, Bing Qi, Yi~Zhao, and Hoi-Kwong Lo.
-\newblock {Practical decoy state for quantum key distribution}.
-\newblock \emph{Physical Review A}, 72:\penalty0 012326, 2005.
-\newblock \doi{10.1103/PhysRevA.72.012326}.
+\bibitem[Ferreira~da Silva et~al.(2012)Ferreira~da Silva, Xavier, Tempor{\~a}o,
+  and von~der Weid]{dasilva2012}
+Thiago Ferreira~da Silva, Guilherme~B. Xavier, Guilherme~P. Tempor{\~a}o, and
+  Jean~Pierre von~der Weid.
+\newblock Real-time monitoring of single-photon detectors against eavesdropping
+  in quantum key distribution systems.
+\newblock \emph{Optics Express}, 20\penalty0 (17):\penalty0 18911, 2012.
+\newblock \doi{10.1364/OE.20.018911}.
 
-\bibitem[Lo et~al.(2012)Lo, Curty, and Qi]{lo2012}
-Hoi-Kwong Lo, Marcos Curty, and Bing Qi.
-\newblock {Measurement-device-independent quantum key distribution}.
-\newblock \emph{Physical Review Letters}, 108:\penalty0 130503, 2012.
-\newblock \doi{10.1103/PhysRevLett.108.130503}.
+\bibitem[Gras et~al.(2021)Gras, Rusca, Zbinden, and Bussi{\`e}res]{gras2021}
+Ga{\"e}tan Gras, Davide Rusca, Hugo Zbinden, and F{\'e}lix Bussi{\`e}res.
+\newblock Countermeasure against quantum hacking using detection statistics.
+\newblock \emph{Physical Review Applied}, 15\penalty0 (3):\penalty0 034052,
+  2021.
+\newblock \doi{10.1103/PhysRevApplied.15.034052}.
 
 \bibitem[Yuan et~al.(2010)Yuan, Dynes, and Shields]{yuan2010}
 Z.~L. Yuan, J.~F. Dynes, and A.~J. Shields.
@@ -165,6 +169,12 @@ Charles Ci~Wen Lim, Nino Walenta, Matthieu Legr{\'e}, Nicolas Gisin, and Hugo
   21\penalty0 (3):\penalty0 192--196, 2015.
 \newblock \doi{10.1109/JSTQE.2015.2389528}.
 
+\bibitem[Lo et~al.(2012)Lo, Curty, and Qi]{lo2012}
+Hoi-Kwong Lo, Marcos Curty, and Bing Qi.
+\newblock {Measurement-device-independent quantum key distribution}.
+\newblock \emph{Physical Review Letters}, 108:\penalty0 130503, 2012.
+\newblock \doi{10.1103/PhysRevLett.108.130503}.
+
 \bibitem[Brassard et~al.(2000)Brassard, L{\"u}tkenhaus, Mor, and
   Sanders]{brassard2000}
 Gilles Brassard, Norbert L{\"u}tkenhaus, Tal Mor, and Barry~C. Sanders.
@@ -172,12 +182,41 @@ Gilles Brassard, Norbert L{\"u}tkenhaus, Tal Mor, and Barry~C. Sanders.
 \newblock \emph{Physical Review Letters}, 85:\penalty0 1330--1333, 2000.
 \newblock \doi{10.1103/PhysRevLett.85.1330}.
 
+\bibitem[Ma et~al.(2005)Ma, Qi, Zhao, and Lo]{ma2005}
+Xiongfeng Ma, Bing Qi, Yi~Zhao, and Hoi-Kwong Lo.
+\newblock {Practical decoy state for quantum key distribution}.
+\newblock \emph{Physical Review A}, 72:\penalty0 012326, 2005.
+\newblock \doi{10.1103/PhysRevA.72.012326}.
+
+\bibitem[Zhang et~al.(2017)Zhang, Zhao, Razavi, and Ma]{zhang2017}
+Zhen Zhang, Qi~Zhao, Mohsen Razavi, and Xiongfeng Ma.
+\newblock {Improved key-rate bounds for practical decoy-state
+  quantum-key-distribution systems}.
+\newblock \emph{Physical Review A}, 95:\penalty0 012333, 2017.
+\newblock \doi{10.1103/PhysRevA.95.012333}.
+
 \bibitem[Tomamichel et~al.(2012)Tomamichel, Lim, Gisin, and
   Renner]{tomamichel2012}
 Marco Tomamichel, Charles Ci~Wen Lim, Nicolas Gisin, and Renato Renner.
 \newblock {Tight finite-key analysis for quantum cryptography}.
 \newblock \emph{Nature Communications}, 3:\penalty0 634, 2012.
 \newblock \doi{10.1038/ncomms1631}.
+
+\bibitem[Wang(2007)]{wang2007}
+Xiang-Bin Wang.
+\newblock {Decoy-state quantum key distribution with large random errors of
+  light intensity}.
+\newblock \emph{Physical Review A}, 75:\penalty0 052301, 2007.
+\newblock \doi{10.1103/PhysRevA.75.052301}.
+
+\bibitem[Mizutani et~al.(2015)Mizutani, Curty, Lim, Imoto, and
+  Tamaki]{mizutani2015}
+Akihiro Mizutani, Marcos Curty, Charles Ci~Wen Lim, Nobuyuki Imoto, and Kiyoshi
+  Tamaki.
+\newblock {Finite-key security analysis of quantum key distribution with
+  imperfect light sources}.
+\newblock \emph{New Journal of Physics}, 17:\penalty0 093011, 2015.
+\newblock \doi{10.1088/1367-2630/17/9/093011}.
 
 \bibitem[Pirandola et~al.(2020)]{pirandola2020}
 S.~Pirandola et~al.
@@ -208,6 +247,40 @@ M.~Lucamarini, I.~Choi, M.~B. Ward, J.~F. Dynes, Z.~L. Yuan, and A.~J. Shields.
 \newblock \emph{Physical Review X}, 5:\penalty0 031030, 2015.
 \newblock \doi{10.1103/PhysRevX.5.031030}.
 
+\bibitem[Lydersen et~al.(2011)Lydersen, Akhlaghi, Majedi, Skaar, and
+  Makarov]{lydersen2011}
+Lars Lydersen, Mohsen~K. Akhlaghi, A.~Hamed Majedi, Johannes Skaar, and Vadim
+  Makarov.
+\newblock {Controlling a superconducting nanowire single-photon detector using
+  tailored bright illumination}.
+\newblock \emph{New Journal of Physics}, 13:\penalty0 113042, 2011.
+\newblock \doi{10.1088/1367-2630/13/11/113042}.
+
+\bibitem[Sajeed et~al.(2015)Sajeed, Radchenko, Kaiser, Bourgoin, Pappa, Monat,
+  Legr{\'e}, and Makarov]{sajeed2015}
+Shihan Sajeed, Igor Radchenko, Sarah Kaiser, Jean-Philippe Bourgoin, Anna
+  Pappa, Laurent Monat, Matthieu Legr{\'e}, and Vadim Makarov.
+\newblock {Attacks exploiting deviation of mean photon number in quantum key
+  distribution and coin tossing}.
+\newblock \emph{Physical Review A}, 91:\penalty0 032326, 2015.
+\newblock \doi{10.1103/PhysRevA.91.032326}.
+
+\bibitem[Huang et~al.(2019)Huang, Navarrete, Sun, Chaiwongkhot, Curty, and
+  Makarov]{huang2019}
+Anqi Huang, {\'A}lvaro Navarrete, Shi-Hai Sun, Poompong Chaiwongkhot, Marcos
+  Curty, and Vadim Makarov.
+\newblock {Laser-seeding attack in quantum key distribution}.
+\newblock \emph{Physical Review Applied}, 12:\penalty0 064043, 2019.
+\newblock \doi{10.1103/PhysRevApplied.12.064043}.
+
+\bibitem[Jain et~al.(2011)Jain, Wittmann, Lydersen, Wiechers, Elser, Marquardt,
+  Makarov, and Leuchs]{jain2011}
+Nitin Jain, Christoffer Wittmann, Lars Lydersen, Carlos Wiechers, Dominique
+  Elser, Christoph Marquardt, Vadim Makarov, and Gerd Leuchs.
+\newblock {Device calibration impacts security of quantum key distribution}.
+\newblock \emph{Physical Review Letters}, 107:\penalty0 110501, 2011.
+\newblock \doi{10.1103/PhysRevLett.107.110501}.
+
 \bibitem[Huang et~al.(2016)Huang, Sajeed, Chaiwongkhot, Soucarros, Legr{\'e},
   and Makarov]{huang2016}
 Anqi Huang, Shihan Sajeed, Poompong Chaiwongkhot, Mathilde Soucarros, Matthieu
@@ -217,6 +290,32 @@ Anqi Huang, Shihan Sajeed, Poompong Chaiwongkhot, Mathilde Soucarros, Matthieu
 \newblock \emph{IEEE Journal of Quantum Electronics}, 52\penalty0
   (11):\penalty0 1--11, 2016.
 \newblock \doi{10.1109/JQE.2016.2611443}.
+
+\bibitem[Qian et~al.(2019)Qian, He, Wang, Chen, Yin, Guo, and Han]{qian2019}
+Yong-Jun Qian, De-Yong He, Shuang Wang, Wei Chen, Zhen-Qiang Yin, Guang-Can
+  Guo, and Zheng-Fu Han.
+\newblock Robust countermeasure against detector control attack in a practical
+  quantum key distribution system.
+\newblock \emph{Optica}, 6\penalty0 (9):\penalty0 1178, 2019.
+\newblock \doi{10.1364/OPTICA.6.001178}.
+
+\bibitem[Lee et~al.(2016)Lee, Park, Woo, Park, Kim, Han, and Moon]{lee2016}
+Min~Soo Lee, Byung~Kwon Park, Min~Ki Woo, Chang~Hoon Park, Yong-Su Kim,
+  Sang-Wook Han, and Sung Moon.
+\newblock Countermeasure against blinding attacks on low-noise detectors with a
+  background-noise-cancellation scheme.
+\newblock \emph{Physical Review A}, 94\penalty0 (6):\penalty0 062321, 2016.
+\newblock \doi{10.1103/PhysRevA.94.062321}.
+
+\bibitem[Koehler-Sidki et~al.(2018)Koehler-Sidki, Dynes, Lucamarini, Roberts,
+  Sharpe, Yuan, and Shields]{koehlersidki2018}
+A.~Koehler-Sidki, J.~F. Dynes, M.~Lucamarini, G.~L. Roberts, A.~W. Sharpe,
+  Z.~L. Yuan, and A.~J. Shields.
+\newblock Best-practice criteria for practical security of self-differencing
+  avalanche photodiode detectors in quantum key distribution.
+\newblock \emph{Physical Review Applied}, 9\penalty0 (4):\penalty0 044027,
+  2018.
+\newblock \doi{10.1103/PhysRevApplied.9.044027}.
 
 \bibitem[Wang and Lo(2019)]{wang2019}
 Wenyuan Wang and Hoi-Kwong Lo.
@@ -258,16 +357,11 @@ Leo Breiman.
 \newblock \emph{Machine Learning}, 45:\penalty0 5--32, 2001.
 \newblock \doi{10.1023/A:1010933404324}.
 
-\bibitem[Wilcoxon(1945)]{wilcoxon1945}
-Frank Wilcoxon.
-\newblock {Individual comparisons by ranking methods}.
-\newblock \emph{Biometrics Bulletin}, 1\penalty0 (6):\penalty0 80--83, 1945.
-\newblock \doi{10.2307/3001968}.
-
-\bibitem[Holm(1979)]{holm1979}
-Sture Holm.
-\newblock {A simple sequentially rejective multiple test procedure}.
-\newblock \emph{Scandinavian Journal of Statistics}, 6\penalty0 (2):\penalty0
-  65--70, 1979.
+\bibitem[Efron(1979)]{efron1979}
+B.~Efron.
+\newblock Bootstrap methods: Another look at the jackknife.
+\newblock \emph{The Annals of Statistics}, 7\penalty0 (1):\penalty0 1--26,
+  1979.
+\newblock \doi{10.1214/aos/1176344552}.
 
 \end{thebibliography}

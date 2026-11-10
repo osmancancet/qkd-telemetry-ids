@@ -1,0 +1,9 @@
+afterpulse_x0.2_step {'DCS': np.float64(0.0011), 'DCS-CUSUM': np.float64(0.0002), 'DCS-block': np.float64(0.001), 'DCS-X': np.float64(0.0012), 'DCS+F': np.float64(0.4836)}
+better_compensator {'DCS': np.float64(0.0013), 'DCS-CUSUM': np.float64(0.002), 'DCS-block': np.float64(0.0016), 'DCS-X': np.float64(0.0011), 'DCS+F': np.float64(0.1955)}
+loss_step_7dB {'DCS': np.float64(0.0007), 'DCS-CUSUM': np.float64(0.0005), 'DCS-block': np.float64(0.0008), 'DCS-X': np.float64(0.0008), 'DCS+F': np.float64(0.4768)}
+dark_x5_step {'DCS': np.float64(0.0011), 'DCS-CUSUM': np.float64(0.0006), 'DCS-block': np.float64(0.0018), 'DCS-X': np.float64(0.001), 'DCS+F': np.float64(0.0011)}
+efficiency_step_-20pct {'DCS': np.float64(0.0009), 'DCS-CUSUM': np.float64(0.0006), 'DCS-block': np.float64(0.0016), 'DCS-X': np.float64(0.0009), 'DCS+F': np.float64(0.0009)}
+laser_relock_+3pct {'DCS': np.float64(0.0012), 'DCS-CUSUM': np.float64(0.0007), 'DCS-block': np.float64(0.0013), 'DCS-X': np.float64(0.0012), 'DCS+F': np.float64(0.0012)}
+monitor_step_1pct_decoy {'DCS': np.float64(0.0653), 'DCS-CUSUM': np.float64(0.4998), 'DCS-block': np.float64(0.4998), 'DCS-X': np.float64(0.0733), 'DCS+F': np.float64(0.0653)}
+blind_sub {'DCS': (np.float64(0.496), np.float64(0.001)), 'DCS-CUSUM': (np.float64(0.486), np.float64(0.004)), 'DCS-block': (np.float64(0.488), np.float64(0.001)), 'DCS-X': (np.float64(0.509), np.float64(0.001)), 'DCS+F': (np.float64(0.498), np.float64(0.005))}
+margin_d4 {'y0_min_over_floor': 1.804, 'ed_min_over_floor': 1.651}

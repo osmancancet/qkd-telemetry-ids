@@ -1,0 +1,10 @@
+seed 13 done in 128.5s
+seed 17 done in 125.6s
+seed 21 done in 126.6s
+seed 25 done in 123.1s
+seed 29 done in 127.0s
+seed 33 done in 125.7s
+seed 37 done in 126.4s
+seed 41 done in 128.6s
+seed 45 done in 128.5s
+seed 49 done in 129.4s
